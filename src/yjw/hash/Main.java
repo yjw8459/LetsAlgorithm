@@ -1,4 +1,4 @@
-package hash;
+package yjw.hash;
 
 public class Main {
 

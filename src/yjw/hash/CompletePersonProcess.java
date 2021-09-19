@@ -1,4 +1,4 @@
-package hash;
+package yjw.hash;
 
 import java.util.ArrayList;
 import java.util.Arrays;
