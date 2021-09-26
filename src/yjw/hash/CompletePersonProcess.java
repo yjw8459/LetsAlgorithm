@@ -26,22 +26,22 @@ public class CompletePersonProcess {
         String answer = "";
         List<String> participantList = new ArrayList<>(Arrays.asList(participant));
         List<String> completionList = new ArrayList<>(Arrays.asList(completion));
+
         Loof1 :
-        for (int i = 0; i < participantList.size(); i++){   //참가자
+        for (int i = participantList.size()-1; i >= 0; i--){   //참가자
             String comparison1 = participantList.get(i);
-            boolean result = false;
 
             Loof2 :
-            for ( int j = 0; j < completionList.size(); j++ ){  // 완주자
+            for ( int j = completionList.size()-1; j >= 0; j-- ){  // 완주자
                 String comparison2 = completionList.get(j);
                 if( comparison1.equals(comparison2) ){
-                    result = true;
                     completionList.remove(j);
                     participantList.remove(i);
+                    break Loof2;
                 }
             }
-            if( !result ){
-                answer = comparison1;
+            if( participantList.size() == 1 ){
+                answer = participantList.get(0);
                 break Loof1;
             }
         }
