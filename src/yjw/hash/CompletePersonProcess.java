@@ -2,6 +2,7 @@ package yjw.hash;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class CompletePersonProcess {
@@ -47,5 +48,40 @@ public class CompletePersonProcess {
         }
         return answer;
     }
+
+    public String solution2(String[] participant, String[] completion){
+        String answer = "";
+        HashMap<String, Integer> hm = new HashMap<>();
+        for (String player : participant) hm.put(player, hm.getOrDefault(player, 0) + 1);
+        for (String player : completion) hm.put(player, hm.get(player) - 1);
+        /*
+        *   participant의 배열 값들을 hashMap 키 값으로 대입하고 value를 1로 모두 초기화
+        *   Completion의 배열 값들을 key값과 대입해서 있는 key의 value만 -1 연산
+        *   1인 값만 출력
+        * */
+
+
+        for (String key : hm.keySet()) {
+            if (hm.get(key) != 0){
+                answer = key;
+            }
+        }
+        return answer;
+    }
+
+    public String solution3(String[] participant, String[] completion){
+        String answer = "";
+        Arrays.sort(participant);
+        Arrays.sort(completion);
+        for (int i = 0; i < completion.length; i++) {
+            if (!participant[i].equals(completion[i])) {
+                answer += participant[i];
+                return answer;
+            }
+        }
+        answer += participant[participant.length - 1];
+        return answer;
+    }
+
 
 }
