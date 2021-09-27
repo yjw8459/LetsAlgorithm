@@ -14,9 +14,14 @@ public class Main {
 
         //전화번호부
         //String[] phoneBook = {"119", "97674223", "1195524421"};
-        String[] phoneBook = {"12","223","3235","567","88"};
-        PhoneBook pb = new PhoneBook();
-        System.out.println(pb.solution(phoneBook));
+//        String[] phoneBook = {"12","223","3235","567","88"};
+//        PhoneBook pb = new PhoneBook();
+//        System.out.println(pb.solution(phoneBook));
+
+        //스파이
+        String[][] clothes = {{"yellowhat", "headgear"}, {"bluesunglasses", "eyewear"}, {"green_turban", "headgear"}};
+        Spy spy = new Spy();
+        spy.solution(clothes);
 
 
     }
