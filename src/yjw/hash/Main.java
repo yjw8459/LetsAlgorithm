@@ -19,11 +19,17 @@ public class Main {
 //        System.out.println(pb.solution(phoneBook));
 
         //스파이
-        String[][] clothes = {{"yellowhat", "headgear"}, {"bluesunglasses", "eyewear"}, {"green_turban", "headgear"}};
-        Spy spy = new Spy();
-        int solution = spy.solution(clothes);
-        System.out.println(solution);
+//        String[][] clothes = {{"yellowhat", "headgear"}, {"bluesunglasses", "eyewear"}, {"green_turban", "headgear"}};
+//        Spy spy = new Spy();
+//        int solution = spy.solution(clothes);
+//        System.out.println(solution);
 
+        //베스트 앨범
+        //["classic", "pop", "classic", "classic", "pop"]	[500, 600, 150, 800, 2500]	[4, 1, 3, 0]
+        String[] genres = {"classic", "pop", "classic", "classic", "pop"};
+        int[] plays = {500, 600, 150, 800, 2500};
+        BestAlbum bestAlbum = new BestAlbum();
+        bestAlbum.solution(genres, plays);
 
     }
 }
