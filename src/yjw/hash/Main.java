@@ -21,7 +21,8 @@ public class Main {
         //스파이
         String[][] clothes = {{"yellowhat", "headgear"}, {"bluesunglasses", "eyewear"}, {"green_turban", "headgear"}};
         Spy spy = new Spy();
-        spy.solution(clothes);
+        int solution = spy.solution(clothes);
+        System.out.println(solution);
 
 
     }
