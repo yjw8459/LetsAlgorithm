@@ -26,8 +26,30 @@ public class BestAlbum {
         Map<String, List<Integer>> genreMap = new HashMap<>();
         List<String> genreList = Arrays.asList(genes);
         genreList.forEach(genre -> {
-            if( genreMap.get(genre) == null)    genreMap.put(genre, new ArrayList<>());
+            if( genreMap.get(genre) == null){
+                List<Integer> playList = new ArrayList<>();
+                playList.add(0);
+                genreMap.put(genre, playList);
+            }
         });
+        for (int i = 0; i < genreList.size(); i++){
+            genreMap.get(genreList.get(i)).set(0, genreMap.get(genreList.get(i)).get(0) + plays[i]);
+            genreMap.get(genreList.get(i)).add(plays[i]);
+        }
+        List<String> sortGenres = new ArrayList<>();
+        List<Integer> sortPlays = new ArrayList<>();
+        for (String key : genreMap.keySet()){
+            int thisPlay = genreMap.get(key).get(0);
+            for (Integer play : sortPlays){
+                if ( thisPlay < play ){
+
+                }
+            }
+            if(sortGenres.size() == 0){
+                sortPlays.add(thisPlay);
+                sortGenres.add(key);
+            }
+        }
         return null;
     }
 
