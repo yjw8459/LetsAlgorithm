@@ -1,6 +1,7 @@
 package hash;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 스트리밍 사이트에서 장르 별로 가장 많이 재생된 노래를 두 개씩 모아 베스트 앨범을 출시하려 합니다. 노래는 고유 번호로 구분하며, 노래를 수록하는 기준은 다음과 같습니다.
@@ -22,35 +23,56 @@ import java.util.*;
  */
 public class BestAlbum {
 
-    public int[] solution(String[] genes, int[] plays){
-        Map<String, List<Integer>> genreMap = new HashMap<>();
-        List<String> genreList = Arrays.asList(genes);
-        genreList.forEach(genre -> {
-            if( genreMap.get(genre) == null){
-                List<Integer> playList = new ArrayList<>();
-                playList.add(0);
-                genreMap.put(genre, playList);
-            }
-        });
-        for (int i = 0; i < genreList.size(); i++){
-            genreMap.get(genreList.get(i)).set(0, genreMap.get(genreList.get(i)).get(0) + plays[i]);
-            genreMap.get(genreList.get(i)).add(plays[i]);
-        }
-        List<String> sortGenres = new ArrayList<>();
-        List<Integer> sortPlays = new ArrayList<>();
-        for (String key : genreMap.keySet()){
-            int thisPlay = genreMap.get(key).get(0);
-            for (Integer play : sortPlays){
-                if ( thisPlay < play ){
+    static class Music{
+        public int idx;
+        public int play;
 
+        public Music(int idx, int play){
+            this.idx = idx;
+            this.play = play;
+        }
+    }
+
+
+    public int[] solution(String[] genres, int[] plays){
+        Map<String, Integer> map = new HashMap<>();
+        for(int i = 0; i < genres.length; i++){
+            map.put(genres[i], map.getOrDefault(genres[i], 0) + plays[i]);
+        }
+
+        List<String> genresOrder = new ArrayList<>();
+
+        //내림차순 정렬
+        //최대 값을 List에 저장하고 Remove
+        while (map.size() != 0 ){
+            int max = -1;
+            String maxKey = "";
+            for (String key : map.keySet()){
+                int tmp = map.get(key);
+                if ( tmp > max ){
+                    max = tmp;
+                    maxKey = key;
                 }
             }
-            if(sortGenres.size() == 0){
-                sortPlays.add(thisPlay);
-                sortGenres.add(key);
-            }
+            genresOrder.add(maxKey);
+            map.remove(maxKey);
         }
-        return null;
+
+        List<Music> result = new ArrayList<>();
+        for (String genre : genresOrder){
+            List<Music> list = new ArrayList<>();
+            for (int i = 0; i < genres.length; i++){
+                if ( genre.equals(genres[i]) )  list.add(new Music(i, plays[i]));
+            }
+            Collections.sort(list, (i1, i2) -> i2.play - i1.play);  //곡 내림차순 정렬
+            result.add(list.get(0));
+            if ( list.size() != 1 ) result.add(list.get(1));
+        }
+        int[] answer = new int[result.size()];
+        for (int i = 0; i < result.size(); i++){
+            answer[i] = result.get(i).idx;
+        }
+        return answer;
     }
 
 }
