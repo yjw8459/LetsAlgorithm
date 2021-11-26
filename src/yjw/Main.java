@@ -1,4 +1,6 @@
-package hash;
+package yjw;
+
+import yjw.hash.BestAlbum;
 
 public class Main {
 
