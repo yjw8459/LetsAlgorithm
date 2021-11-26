@@ -1,6 +1,8 @@
 package yjw;
 
 import yjw.hash.BestAlbum;
+import yjw.study.collection.CollectionsSort;
+import yjw.study.stream.Boxed;
 
 public class Main {
 
@@ -10,10 +12,12 @@ public class Main {
 //        CompletePersonProcess process = new CompletePersonProcess();
 //        String answer = process.solution(participant, completion);
 //        System.out.println(answer);
-        String[] genres = {"classic", "pop", "classic", "classic", "pop"};
-        int[] plays = {500, 600, 150, 800, 2500};
-        //[4, 1, 3, 0]
-        BestAlbum best = new BestAlbum();
-        best.solution(genres, plays);
+//        String[] genres = {"classic", "pop", "classic", "classic", "pop"};
+//        int[] plays = {500, 600, 150, 800, 2500};
+//        //[4, 1, 3, 0]
+//        BestAlbum best = new BestAlbum();
+//        best.solution(genres, plays);
+        CollectionsSort collectionsSort = new CollectionsSort();
+        collectionsSort.study1();
     }
 }
