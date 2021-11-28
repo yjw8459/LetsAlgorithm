@@ -11,6 +11,12 @@ public class CollectionsSort {
         String name;
         int num;
 
+        /**
+         * Sort 대상 클래스에 정렬 조건을 넣을 경우
+         * Comparable 인터페이스를 상속받고 대상 클래스를 Sort 대상 클래스로 설정한다.
+         * @param o
+         * @return
+         */
         @Override
         public int compareTo(ComparableTest o) {
             if ( this.num > o.num )     return 1;
@@ -40,6 +46,11 @@ public class CollectionsSort {
 
     public static void study1(){
 
+        /**
+         * 정렬 조건을 다른 클래스로 설정할 경우,
+         * Comparator 인터페이스의 구현체에 정렬 조건을 설정하고
+         * 정렬 대상 클래스를 대상으로 설정한다.
+         */
         class ComparatorTest implements Comparator<ComparableTest>{
 
             @Override
