@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 
 public class BlackJack {
 
-    public void solution() throws Exception{
+    public static void solution() throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer token = new StringTokenizer(br.readLine());
@@ -24,7 +24,29 @@ public class BlackJack {
         Collections.sort(list);
         int m = k-list.get(0);
         int avg = m/2;
+        ArrayList<Integer> absList = new ArrayList<>();
+        for ( int i = 1; i < list.size(); i++ ){
+            absList.add(Math.abs( avg - list.get(i) ));
+        }
+        for (Integer target: absList) {
+            int min = -1;
+            int key =  0;
+            for ( int i = 0; i < absList.size(); i++ ){
+                if ( absList.get(i) <= min ){
+                    min = absList.get(i);
+                    key = i;
+                }
+            }
+            absList.remove(key);
+        }
 
     }
 
+    public static void main(String[] args) {
+        try {
+            BlackJack.solution();
+        }
+        catch (Exception e){ e.printStackTrace(); }
+    }
+    //21 - 5 = 16 8
 }
