@@ -18,6 +18,6 @@ public class Main {
 //        BestAlbum best = new BestAlbum();
 //        best.solution(genres, plays);
         CollectionsSort collectionsSort = new CollectionsSort();
-        collectionsSort.study1();
+//        collectionsSort.study1();
     }
 }

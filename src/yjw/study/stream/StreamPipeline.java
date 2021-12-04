@@ -17,8 +17,8 @@ public class StreamPipeline {
         /**
          * MemberList에서 남자인 객체의 나이 값으로 평균 값을 구하는 파이프라인.
          */
-        double ageAvg = list.stream().filter(m-> m.getSex() == Member.MAIL).mapToInt(Member::getAge)
-                .average().getAsDouble();
+//        double ageAvg = list.stream().filter(m-> m.getSex() == Member.MAIL).mapToInt(Member::getAge)
+//                .average().getAsDouble();
 
     }
 

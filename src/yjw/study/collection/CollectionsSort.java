@@ -19,9 +19,10 @@ public class CollectionsSort {
          */
         @Override
         public int compareTo(ComparableTest o) {
-            if ( this.num > o.num )     return 1;
-            else if( this.num < o.num ) return -1;
-            else                        return 0;
+//            if ( this.num > o.num )     return 1;
+//            else if( this.num < o.num ) return -1;
+//            else                        return 0;
+            return Integer.compare(num, o.num); //위 코드 함수
         }
         @Override
         public String toString(){
@@ -31,7 +32,7 @@ public class CollectionsSort {
         public void setNum(int num){
             this.num = num;
         }
-        public int getNum(int num){
+        public int getNum(){
             return num;
         }
 
@@ -44,7 +45,7 @@ public class CollectionsSort {
 
 
 
-    public static void study1(){
+    public static void study1() throws Exception{
 
         /**
          * 정렬 조건을 다른 클래스로 설정할 경우,
@@ -101,7 +102,7 @@ public class CollectionsSort {
         System.out.println("tetete");
         Collections.sort(test);
         System.out.println(test);
-
+        test.stream().sorted(Comparator.naturalOrder());
         /**
          * 클래스가 Comparable을 implement하지 않을 경우
          * Comparator를 implement하고 compare메소드를 Override한 조건이 명시된 클래스의 인스턴스를 Collections에
