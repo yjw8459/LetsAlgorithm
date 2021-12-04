@@ -14,5 +14,6 @@ public class IntStreamStudy {
          */
         IntStream stream = IntStream.rangeClosed(1 ,100);
         stream.forEach(a -> sum+=a);
+
     }
 }
