@@ -1,5 +1,7 @@
 package yjw.programmers.level1;
 
+import java.util.Arrays;
+
 /**
  * 로또의 최고 순위와 최저 순위
  * 문제 설명
@@ -58,7 +60,45 @@ package yjw.programmers.level1;
  */
 public class Lotto {
 
+    public int[] solution(int[] lottos, int[] win_nums){
+        int[] answer = new int[2];
+        int matchNum = 0;
+        int hiddenCard = 0;
+        for (int i = 0; i < win_nums.length; i++){
+            if ( lottos[i] == 0 ) hiddenCard++;
+            else{
+                for (int j = 0; j < win_nums.length; j++){
+                    if( lottos[i] == win_nums[j] ) matchNum++;
+                }
+            }
+        }
 
+        int min = matchNum;
+        int max = matchNum + hiddenCard;
+        answer[0] = Math.min(7-max, 6); //Math.min 두 수 중 작은 값을 return;
+        answer[1] = Math.min(7-min, 6); //Math.min 두 수 중 작은 값을 return;
+
+//      내코드
+//        answer[0] = (7 - matchNum) - hiddenCard;
+//        answer[1] = 7 - (matchNum == 0 ? 1 : matchNum);
+
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        int[] lottos1 = {44, 1, 0, 0, 31, 25};  //3, 5
+        int[] lottos2 = {0, 0, 0, 0, 0, 0};     //1, 6
+        int[] lottos3 = {45, 4, 35, 20, 3, 9};  //1, 1
+
+        int[] win_nums1 = {31, 10, 45, 1, 6, 19};
+        int[] win_nums2 = {38, 19, 20, 40, 15, 25};
+        int[] win_nums3 = {20, 9, 3, 45, 4, 35};
+
+        Lotto lotto = new Lotto();
+        lotto.solution(lottos1, win_nums1);
+        lotto.solution(lottos2, win_nums2);
+        lotto.solution(lottos3, win_nums3);
+    }
 
 
 }
