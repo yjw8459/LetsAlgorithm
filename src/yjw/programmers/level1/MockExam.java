@@ -1,9 +1,7 @@
 package yjw.programmers.level1;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 모의고사
@@ -39,11 +37,15 @@ import java.util.Map;
  */
 public class MockExam {
 
-    static class Student{
+    static class Student implements Comparable<Student>{
         int id;
         int answerCnt;
         public Student(int id){
             this.id = id;
+        }
+
+        public int getId(){
+            return id;
         }
 
         public void addAnswerCnt(){
@@ -52,28 +54,35 @@ public class MockExam {
         public int getAnswerCnt(){
             return answerCnt;
         }
-
+        @Override
+        public int compareTo(Student o) {
+            return getAnswerCnt() - o.getAnswerCnt();
+        }
     }
 
     public int[] solution(int[] answers) {
 
-
-
-        int[] answer = new int[3];
         int[] pattern1 = {1, 2, 3, 4, 5};
         int[] pattern2 = {2, 1, 2, 3, 2, 4, 2, 5};
         int[] pattern3 = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
         ArrayList<Student> list = new ArrayList<>(Arrays.asList(
-                new Student(0),
                 new Student(1),
-                new Student(2)
+                new Student(2),
+                new Student(3)
         ));
         for (int i = 0; i < answers.length; i++ ){
             if ( pattern1[i % 5] == answers[i]  )   list.get(0).addAnswerCnt();
             if ( pattern2[i % 8] == answers[i]  )   list.get(1).addAnswerCnt();
             if ( pattern3[i % 10] == answers[i]  )  list.get(2).addAnswerCnt();
         }
-        list.stream().sorted((o1, o2) -> Integer.compare(o1.getAnswerCnt(), o2.getAnswerCnt()));
+
+        Collections.sort(list);
+        int max = list.get(2).getAnswerCnt();
+        list = (ArrayList<Student>) list.stream().filter(o -> o.getAnswerCnt() == max ).collect(Collectors.toList());
+        int[] answer = new int[list.size()];
+        for (int i = 0; i < list.size(); i++){
+            answer[i] = list.get(i).getId();
+        }
         return answer;
     }
 
