@@ -1,10 +1,13 @@
 package yjw.backjun;
 
+import yjw.datastructure.Array;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.StringTokenizer;
 
 /**
@@ -18,17 +21,18 @@ public class Equalizer {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         int n = Integer.parseInt(st.nextToken());
+        long total = 0;
         ArrayList<Integer> list = new ArrayList<>();
-        int sum = 0;
-        for ( int i = 0; i < n; i++ ){
+        for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
             list.add(Integer.parseInt(st.nextToken()));
-            sum += (i+1);
         }
-        int max = list.stream().reduce(0, Integer::sum);
 
-        System.out.println(sum - max);
-        br.close();
+        list.sort(Comparator.naturalOrder());
+        for ( int i = 0; i < list.size(); i++ ){
+            total += Math.abs( list.get(i) - (i+1));
+        }
+        System.out.println(total);
     }
 
 }
