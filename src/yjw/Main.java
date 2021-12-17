@@ -1,9 +1,9 @@
 package yjw;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Comparator;
+import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 /**
@@ -13,19 +13,15 @@ public class Main {
 
     public static void main(String[] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int n = Integer.parseInt(st.nextToken());
-        long total = 0;
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            st = new StringTokenizer(br.readLine());
-            list.add(Integer.parseInt(st.nextToken()));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st ;
+        String text ;
+        while ((text = br.readLine()) != null && text.length() != 0){
+            st = new StringTokenizer(text);
+            bw.write(Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken()) + "\n");
         }
-
-        list.sort(Comparator.naturalOrder());
-        for ( int i = 0; i < list.size(); i++ ){
-            total += Math.abs( list.get(i) - (i+1));
-        }
-        System.out.println(total);
+        bw.flush();
+        bw.close();
+        br.close();
     }
 }
