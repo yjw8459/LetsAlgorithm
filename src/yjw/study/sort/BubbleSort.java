@@ -8,6 +8,7 @@ import java.util.Arrays;
  * O(N제곱)
  * 데이터 수가 5개일 경우 = (4+3+2+1) x 2 = O(N제곱)
  *
+ * 동작 구조를 이해할 것.
  *
  */
 public class BubbleSort {
