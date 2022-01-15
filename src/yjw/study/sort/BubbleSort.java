@@ -16,7 +16,7 @@ public class BubbleSort {
     //정렬 여부를 체크하는 것, 반복 시 마다 탐색범위를 줄이는 것이 포인트
     public static int[] bubbleSort(int[] nums){
         int repeat = nums.length -1;
-        boolean sorted = false;
+        boolean sorted = false;                 //교환이 일어났는 지 여부
         while ( ! sorted ){
             sorted = true;
             for (int i = 0; i < repeat; i++) {
