@@ -20,7 +20,7 @@ public class PensionLottery {
         System.out.print(random.nextInt(10));
         System.out.print(random.nextInt(10));
         System.out.print(random.nextInt(10));
-        System.out.print(random.nextInt(10));
+        System.out.println(random.nextInt(10));
 
         random.setSeed(System.currentTimeMillis());
         System.out.println("조 : " + (random.nextInt(5) + 1));
