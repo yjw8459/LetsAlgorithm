@@ -7,7 +7,7 @@ import java.util.Arrays;
  */
 public class SelectionSort {
 
-    public static int[] selectionSort(int[] nums){
+    public static void selectionSort(int[] nums){
         int length = nums.length - 1;
         for ( int i = 0; i < length; i ++ ){
             int min = nums[i];
@@ -23,7 +23,6 @@ public class SelectionSort {
         }
 
         Arrays.stream(nums).forEach(System.out::println);
-        return null;
     }
 
 
